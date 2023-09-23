@@ -21,7 +21,7 @@ pipeline {
 		stage("build jar") {
 			steps {
 				script {
-					sh "mvn package"
+					// sh "mvn package"
 				}
 			}
 		} // end build
@@ -32,9 +32,7 @@ pipeline {
 					withCredentials([
 					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
 					]) {
-						sh "docker build -t biggiebroo/practice:jvm-1.2 ."
-						sh "echo ${PASS} | docker login -u {$USER} --password-stdin"
-						sh "docker push biggiebroo/practice:jvm-1.2"
+						sh "echo docker images"
 					}
 				}
 			}
