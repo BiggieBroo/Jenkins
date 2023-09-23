@@ -1,5 +1,5 @@
 def buildApp() {
-	sh "package Maven"
+	sh "mvn package"
 }
 
 def imageApp() {
