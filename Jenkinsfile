@@ -32,7 +32,7 @@ pipeline {
 					withCredentials([
 					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
 					]) {
-						sh "echo docker images"
+						sh "docker images"
 					}
 				}
 			}
