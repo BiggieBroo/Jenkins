@@ -16,32 +16,27 @@ pipeline {
 					gv = load "script.groovy"
 				}
 			}
-		}
+		} // end init
 
 		stage("build jar") {
 			steps {
 				script {
-					gv.buildApp()
+					sh "mvn package"
 				}
 			}
-		}
+		} // end build
 
-		stage("docker image") {
+		stage("docker") {
 			steps {
 				script {
-					gv.imageApp()
+					withCredentials([
+					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
+					]) {
+						echo "${USER} and ${PASS}"
+					}
 				}
 			}
-		}
+		} // end docker
 
-		stage("docker push") {
-			steps {
-				script {
-					gv.pushApp()
-				}
-			}
-		}	
-
-	}
-
+	} // end stages
 }
