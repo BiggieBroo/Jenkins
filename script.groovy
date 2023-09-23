@@ -8,7 +8,7 @@ def dockerApp() {
 
   sh "docker login -u ${USER} -p ${PASS}"
   sh "docker build -t biggiebroo/practice:jvm-1.4 ."
-  sh "docker push biggiebroo/practice:1.4"
+  sh "docker push biggiebroo/practice:jvm-1.4"
 
   }
 
