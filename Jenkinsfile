@@ -21,7 +21,7 @@ pipeline {
 		stage("build jar") {
 			steps {
 				script {
-					sh "mvn package"
+					gv.buildApp()
 				}
 			}
 		} // end build
@@ -29,12 +29,7 @@ pipeline {
 		stage("docker") {
 			steps {
 				script {
-					withCredentials([
-					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
-					]) {
-						sh "docker login -u ${USER} -p ${PASS}"
-						sh "docker push biggiebroo/practice:jvm-1.2"
-					}
+					gv.dockerApp()
 				}
 			}
 		} // end docker
@@ -42,7 +37,7 @@ pipeline {
 		stage("build") {
 			steps {
 				script {
-					echo "The application has been built ..."
+					gv.dockerBuild()
 				}
 			}
 		}
