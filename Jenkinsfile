@@ -32,7 +32,8 @@ pipeline {
 					withCredentials([
 					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
 					]) {
-						sh "docker images"
+						sh "docker login -u ${USER} -p ${PASS}"
+						sh "docker push biggiebroo/practice:1.2"
 					}
 				}
 			}
