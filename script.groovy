@@ -3,12 +3,12 @@ def buildApp() {
 }
 
 def dockerApp() {
+  
+  withCredentials([usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')]) {
 
-withCredentials([ usernamePassword(credentialsId : 'docker', usernamePassword : 'USER', passwordVariable : 'PASS') ]) {
-		sh "docker build -t biggiebroo/practice:jvm-1.3 ."
-		sh "docker login -u ${USER} -p ${PASS}"
-		sh "docker push biggiebroo/practice:jvm-1.3"
-}
+  sh "docker login -u ${USER} -p ${PASS}"
+
+  }
 
 }
 
