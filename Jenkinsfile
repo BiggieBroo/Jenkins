@@ -33,7 +33,7 @@ pipeline {
 					usernamePassword(credentialsId : 'docker', usernameVariable : 'USER', passwordVariable : 'PASS')
 					]) {
 						script "docker build -t biggiebroo/practice:jvm-2.1 ."
-						script "echo ${PASS} | login -u ${USER} --password-stdin"
+						script "echo ${PASS} |docker login -u ${USER} --password-stdin"
 						script "docker push biggiebroo/practice:jvm-2.1"
 					}
 				}
