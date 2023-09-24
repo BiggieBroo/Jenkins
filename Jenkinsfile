@@ -44,11 +44,14 @@ pipeline {
 					choice(name : 'ENV', choices : ['Staging', 'Dev', 'Prod'], description : '')
 				}
 			}
-
-			script {
-				gv.deploy()
-				echo "Chosen environment is ${ENV}"
+			steps {
+				script {
+					gv.deploy()
+					echo "Chosen environment is ${ENV}"
+				}				
 			}
+
+
 		}
 
 	} // end stages
