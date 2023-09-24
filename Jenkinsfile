@@ -40,7 +40,9 @@ pipeline {
 		stage("build image") {
 			steps {
 				script {
-					buildImage 'biggiebroo/practice:jvm-1.2'
+					buildImage 'biggiebroo/practice:jvm-1.3'
+					dockerLogin()
+					dockerPush 'biggiebroo/practice:jvm-1.3'
 				}
 			}
 		} // end buildImage
