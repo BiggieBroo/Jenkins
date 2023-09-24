@@ -29,7 +29,7 @@ pipeline {
 		stage("login, build and push") {
 			steps {
 				script {
-					buildImage 'biggiebroo/practice:jvm-1.0'
+					buildDockerImage 'biggiebroo/practice:jvm-1.0'
 					dockerLogin()					
 					dockerPush 'biggiebroo/practice:jvm-1.0'
 				}
