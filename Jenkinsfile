@@ -31,7 +31,7 @@ pipeline {
 				script {
 					dockerLogin()
 					buildImage "biggiebroo/practice:jvm-1.0"
-					//dockerPush "biggiebroo/practice:jvm-1.0"
+					dockerPush "biggiebroo/practice:jvm-1.0"
 				}
 			}
 		} // end login, build and push
