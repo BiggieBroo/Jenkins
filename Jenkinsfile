@@ -7,6 +7,7 @@ library identifier : 'jenkins-shared-library@main', retriever : modernSCM(
     credentialsId : '1-git'
 	]
 	)
+
 def gv
 
 pipeline {
@@ -39,7 +40,7 @@ pipeline {
 		stage("build image") {
 			steps {
 				script {
-					buildImage()
+					buildImage 'biggiebroo/practice:jvm-1.2'
 				}
 			}
 		} // end buildImage
