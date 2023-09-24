@@ -1,3 +1,10 @@
+library identifier : 'jenkins-shared-library', retriever : modernSCM(
+	[
+    $class : gitSCMSource,
+    remote : 'https://github.com/BiggieBroo/jenkins-shared-library',
+    credentialsId : '1-git'
+	]
+	)
 def gv
 
 pipeline {
@@ -22,7 +29,7 @@ pipeline {
 		stage("build jar") {
 			steps {
 				script {
-					gv.buildJar()
+					buildJar()
 				}
 			}
 		} // end buildjar
@@ -30,7 +37,7 @@ pipeline {
 		stage("build image") {
 			steps {
 				script {
-					gv.buildImage()
+					buildImage()
 				}
 			}
 		} // end buildImage
