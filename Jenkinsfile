@@ -43,7 +43,7 @@ pipeline {
  	stage("deploy or run an instance on AWS") {
  		steps {
  			script {
- 				def dockerCMD = "bash ./setup.sh ${IMAGE_NAME}"
+ 				def dockerCMD = "bash ./setup.sh docker-compose.yaml"
  				def ec2Instance = "ec2-user@35.156.71.149"
  				sshagent(['ec2-server-key']) {
  					// block inside of the agent
