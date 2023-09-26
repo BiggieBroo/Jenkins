@@ -15,6 +15,11 @@ pipeline {
  	maven "Maven"
  }
 
+ // environment
+ environment {
+ 	IMAGE_NAME="biggiebroo/practice:jvm-1.0"
+ }
+
  stages {
 
  	stage("build jar") {
@@ -29,8 +34,8 @@ pipeline {
  		steps {
  			script {
  				dockerLogin()
- 				buildDockerImage("biggiebroo/practice:jvm-1.0")
- 				dockerPush("biggiebroo/practice:jvm-1.0")
+ 				buildDockerImage("${IMAGE_NAME}")
+ 				dockerPush("${IMAGE_NAME}")
  			}
  		}
  	} // end docker login, build and push
@@ -38,10 +43,13 @@ pipeline {
  	stage("deploy or run an instance on AWS") {
  		steps {
  			script {
- 				def dockerCMD = "docker run -d -p 8080:8080 biggiebroo/practice:jvm-1.0"
+ 				def dockerCMD = "bash ./setup.sh"
+ 				def ec2Instance = "ec2-user@35.156.71.149"
  				sshagent(['ec2-server-key']) {
  					// block inside of the agent
- 					sh "ssh -o StrictHostKeyChecking=no ec2-user@35.156.71.149 ${dockerCMD}"
+ 					sh "scp setup.sh ${ec2Instance}:/home/ec2-user"
+ 					sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
+ 					sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${dockerCMD}"
  				}
  			}
  		}
