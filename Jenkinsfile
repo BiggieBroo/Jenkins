@@ -48,7 +48,7 @@ pipeline {
 					sshagent(['ec2-server-key']) {
 						sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
 						sh "scp setup.sh ${ec2Instance}:/home/ec2-user"
-						sh "ssh ${ec2Instance} ${shellCmd}"
+						sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${shellCmd}"
 					}
 				}
 			}
