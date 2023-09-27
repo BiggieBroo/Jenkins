@@ -43,12 +43,8 @@ pipeline {
 		stage("AWS") {
 			steps {
 				script {
-					def ec2Instance = "ec2-user@35.156.71.149"
-					def shellCmd = "bash ./setup.sh ${IMAGE_NAME}"
 					sshagent(['ec2-server-key']) {
-						sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
-						sh "scp setup.sh ${ec2Instance}:/home/ec2-user"
-						sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${shellCmd}"
+						sh "ssh -o StrictHostKeyChecking=no ec2-user@35.156.71.149"
 					}
 				}
 			}
