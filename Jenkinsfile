@@ -40,6 +40,20 @@ pipeline {
 			}
 		} // end build image, login and push
 
+		stage("AWS") {
+			steps {
+				script {
+					def ec2Instance = "ec2-user@35.156.71.149"
+					def shellCmd = "bash ./setup.sh"
+					sshagent(['ec2-server-key']) {
+						sh "scp docker-compose.yaml ${ec2Instance}:/home/ec2-user"
+						sh "scp setup.sh ${ec2Instance}:/home/ec2-user"
+						sh "ssh ${ec2Instance} ${shellCmd}"
+					}
+				}
+			}
+		} // end AWS
+
 
 	} // end stages
 
