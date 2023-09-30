@@ -42,7 +42,11 @@ stages {
 			def cmdShell = "bash ./setup.sh"
 			sshagent(['ec2-server-key']) {
 
-			}
+			sh "scp docker-compose.yaml ec2-user@3.120.246.128"
+			sh "scp setup.sh ec2-user@3.120.246.128"
+			sh "ssh ec2-user@3.120.246.128 ${cmdShell}"
+
+			} // end sshagent
 		}
 	} // end AWS
 
