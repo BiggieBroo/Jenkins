@@ -1,5 +1,5 @@
 version: '3'
-service:
+services:
   myapp:
     image: 296385192976.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
     ports:
