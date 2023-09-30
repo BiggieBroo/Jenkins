@@ -39,7 +39,10 @@ stages {
 
 	stage("AWS") {
 		steps {
-			echo "So far this step is going to be stopped for a while"
+			def cmdShell = "bash ./setup.sh"
+			sshagent(['ec2-server-key']) {
+
+			}
 		}
 	} // end AWS
 
