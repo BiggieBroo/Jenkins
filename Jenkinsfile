@@ -45,7 +45,7 @@ stages {
 
 				sshagent(['ec2-server-key']) {
 
-					sh "echo 'Hello'"
+					sh "ssh -o StrictHostKeyChecking=no ec2-user@3.120.246.128"
 	
 
 				} // end sshagent
