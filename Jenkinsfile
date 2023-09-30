@@ -45,7 +45,9 @@ stages {
 
 				sshagent(['ec2-server-key']) {
 
+					sh "scp docker-compose.yaml ec2-user@3.120.246.128"
 					sh "ssh -o StrictHostKeyChecking=no ec2-user@3.120.246.128"
+
 	
 
 				} // end sshagent
