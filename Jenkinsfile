@@ -44,8 +44,8 @@ pipeline {
  		steps {
  			script {
  				sshagent(['ec2-server-key']) {
- 					sh "scp setup.sh ec2-user@3.79.237.14"
- 					sh "ssh ec2-user@3.79.237.14"
+ 					sh "scp setup.sh ec2-user@3.79.237.14:/home/ec2-user"
+ 					sh "ssh -o StrictHostKeyCheking=no ec2-user@3.79.237.14"
  				}
  			}
  		}
