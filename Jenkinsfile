@@ -43,7 +43,10 @@ pipeline {
  	stage("Deploy") {
  		steps {
  			script {
- 				echo "It is on the stage of the deployment"
+ 				sshagent(['ec2-server-key']) {
+ 					sh "scp setup.sh ec2-user@3.79.237.14"
+ 					sh "ssh ec2-user@3.79.237.14"
+ 				}
  			}
  		}
  	} // end Deploy
