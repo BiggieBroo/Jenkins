@@ -24,13 +24,16 @@ pipeline {
 
 	stages {
 		stage("Build") {
+
+
+			steps {
+
 			when {
 				expression {
 					6 > 5
 				}
 			}
-
-			steps {
+			
 				script {
 					buildJar()
 				}
