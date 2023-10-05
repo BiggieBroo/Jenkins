@@ -26,7 +26,7 @@ pipeline {
 		stage("Build") {
 			when {
 				expression {
-					parameters.EXECUTE_TEST
+					6 > 5
 				}
 			}
 
