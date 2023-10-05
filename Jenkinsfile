@@ -22,44 +22,48 @@ pipeline {
 		booleanParam(name: 'EXECUTE_TEST', defaultValue: true, description: '')
 	}
 
-	stage("Build") {
-		when {
-			expression {
-				BRANCH_NAME == "main" || BRANCH_NAME == "master" || parameters.EXECUTE_TEST
-			}
-		}
-
-		steps {
-			script {
-				buildJar()
-			}
-		}
-	} // end Build
-
-	stage("Login, Image and Push") {
-		steps {
-			script {
-				dockerLogin()
-				buildDockerImage("${IMAGE_NAME}")
-				dockerPush("${IMAGE_NAME}")
-			}
-		}
-	} // end Login, Image and Push
-
-	stage("Deploy") {
-		steps {
-			input {
-				message "Please select environment"
-				ok "Done"
-				parameters {
-					choice(name: 'ENVIRONMENT', choices: ['Staging','Production','Server'], description: '')
+	stages {
+		stage("Build") {
+			when {
+				expression {
+					BRANCH_NAME == "main" || BRANCH_NAME == "master" || parameters.EXECUTE_TEST
 				}
 			}
-			script {
-				echo "Welcome to the deployment and your chosen environment is ${ENVIRONMENT}"
+
+			steps {
+				script {
+					buildJar()
+				}
 			}
-		}
-	} // end Deploy
+		} // end Build
+
+		stage("Login, Image and Push") {
+			steps {
+				script {
+					dockerLogin()
+					buildDockerImage("${IMAGE_NAME}")
+					dockerPush("${IMAGE_NAME}")
+				}
+			}
+		} // end Login, Image and Push
+
+		stage("Deploy") {
+			steps {
+				input {
+					message "Please select environment"
+					ok "Done"
+					parameters {
+						choice(name: 'ENVIRONMENT', choices: ['Staging','Production','Server'], description: '')
+					}
+				}
+				script {
+					echo "Welcome to the deployment and your chosen environment is ${ENVIRONMENT}"
+				}
+			}
+		} // end Deploy		
+	}
+
+
 
 
 }
