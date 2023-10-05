@@ -45,7 +45,10 @@ pipeline {
 		stage("Deploy") {
 			steps {
 				script {
-					echo "Welcome to the deployment"
+					sshagent(["ec2-server-key"]) {
+						sh "ssh -o StrictHostKeyChecking=no ec2-user@3.75.178.165"
+						echo "Success"
+					}
 				}
 			}
 		} // end Deploy		
