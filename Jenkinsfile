@@ -52,9 +52,6 @@ pipeline {
 				input {
 					message "Please select environment"
 					ok "Done"
-					parameters {
-						choice(name: 'ENVIRONMENT', choices: ['Staging','Production','Server'], description: '')
-					}
 				}
 				script {
 					echo "Welcome to the deployment and your chosen environment is ${ENVIRONMENT}"
