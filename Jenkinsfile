@@ -49,10 +49,6 @@ pipeline {
 
 		stage("Deploy") {
 			steps {
-				input {
-					message "Please select environment",
-					ok "Done",
-				}
 				script {
 					echo "Welcome to the deployment and your chosen environment is ${ENVIRONMENT}"
 				}
