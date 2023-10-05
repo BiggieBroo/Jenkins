@@ -24,16 +24,8 @@ pipeline {
 
 	stages {
 		stage("Build") {
-
-
 			steps {
 
-			when {
-				expression {
-					6 > 5
-				}
-			}
-			
 				script {
 					buildJar()
 				}
@@ -53,7 +45,7 @@ pipeline {
 		stage("Deploy") {
 			steps {
 				script {
-					echo "Welcome to the deployment and your chosen environment is ${ENVIRONMENT}"
+					echo "Welcome to the deployment"
 				}
 			}
 		} // end Deploy		
