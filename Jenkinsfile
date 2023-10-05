@@ -26,7 +26,7 @@ pipeline {
 		stage("Build") {
 			when {
 				expression {
-					${BRANCH_NAME} == "main" || ${BRANCH_NAME} == "master" || parameters.EXECUTE_TEST
+					parameters.EXECUTE_TEST
 				}
 			}
 
