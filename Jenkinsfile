@@ -46,8 +46,8 @@ pipeline {
 			steps {
 				script {
 					sshagent(["ec2-server-key"]) {
-						sh "scp docker-compose.yaml ec2-user@3.75.178.165"
-						sh "scp setup.sh ec2-user@3.75.178.165"
+						sh "scp docker-compose.yaml ec2-user@3.75.178.165:/home/ec2-user"
+						sh "scp setup.sh ec2-user@3.75.178.165:/home/ec2-user"
 						sh "ssh -o StrictHostKeyChecking=no ec2-user@3.75.178.165"
 					}
 				}
