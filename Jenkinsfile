@@ -17,10 +17,10 @@ pipeline {
 	}
 
 	// Parameters
-	parameters {
+/*	parameters {
 		choice(name: 'VERSION', choices: ['1.1','1.2','1.3'], description: '')
 		booleanParam(name: 'EXECUTE_TEST', defaultValue: true, description: '')
-	}
+	}*/
 
 	stages {
 		stage("Build") {
