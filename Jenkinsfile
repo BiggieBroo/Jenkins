@@ -3,7 +3,7 @@ library identifier: 'jenkins-shared-library@main', retriever: modernSCM([$class 
 pipeline {
 
 	agent any
-	
+
 	// Tools
 	tools {
 		maven "Maven"
@@ -37,7 +37,9 @@ pipeline {
 		stage("Deploy on AWS") {
 			steps {
 				script {
-					sh "echo 'Hello World'"					
+					sshagent(['ec2-server-key']) {
+						sh "scp Jenkinsfile ec2-user@3.75.178.165:/home/ec2-user"
+					}		
 				}
 			}
 		} // Deploy on AWS
