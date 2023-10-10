@@ -2,6 +2,8 @@ library identifier: 'jenkins-shared-library@main', retriever: modernSCM([$class 
 
 pipeline {
 
+	agent any
+	
 	// Tools
 	tools {
 		maven "Maven"
