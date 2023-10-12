@@ -6,7 +6,7 @@ pipeline {
 		maven "Maven"
 	}
 	environment {
-		IMAGE_NAME="biggiebroo:jvm-1.2"
+		IMAGE_NAME="biggiebroo/practice:jvm-1.2"
 	}
 
 	stages {
