@@ -35,6 +35,7 @@ pipeline {
 				script {
 					sshagent(['ec2-server-key']) {
 						sh "ssh -o StrictHostKeyChecking=no ec2-user@3.75.178.165"
+						sh "scp Jenkinsfile ec2-user@3.75.178.165:/home/ec2-user"
 					}
 				}
 			}
