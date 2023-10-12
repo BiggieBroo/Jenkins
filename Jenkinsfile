@@ -33,7 +33,9 @@ pipeline {
 		stage("Deploy on AWS") {
 			steps {
 				script {
-					sh "echo 'It has been deployed with a success!'"
+					sshagent(['ec2-server-key']) {
+						sh "ssh -o StrictHostKeyChecking=no ec2-user@3.75.178.165"
+					}
 				}
 			}
 		} // end Deploy on AWS
