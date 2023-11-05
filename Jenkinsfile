@@ -7,7 +7,7 @@ pipeline {
 	}
 	// Environment
 	environment {
-		IMAGE_NAME = "biggiebroo/practice:jvm-5.0"
+		IMAGE_NAME = "biggiebroo/practice:jvm-1.0"
 	}
 
 	stages {
