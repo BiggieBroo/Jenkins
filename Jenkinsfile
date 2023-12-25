@@ -13,7 +13,7 @@ pipeline {
 
 	stages {
 		
-/*		stage("Build Jar") {
+		stage("Build Jar") {
 			steps {
 				script {
 					buildJar()
@@ -37,14 +37,7 @@ pipeline {
 					sh "echo 'It is being deployed'"
 				}
 			}
-		} // end Deploy*/
-		stage("Hello") {
-			steps {
-				script {
-					sh "echo 'Hello World!'"
-				}
-			}
-		}
+		} // end Deploy
 
 	} // end stages
 } // end pipeline
