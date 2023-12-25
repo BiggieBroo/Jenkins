@@ -2,25 +2,22 @@ library identifier: 'jenkins-shared-library@master', retriever: modernSCM([$clas
 
 pipeline {
 	agent any
-	// Tools
-	tools {
+	//Tools {
 		maven "Maven"
 	}
 	// Environment
 	environment {
 		IMAGE_NAME = "biggiebroo/practice:jvm-1.0"
 	}
-
 	stages {
-		
+
 		stage("Build Jar") {
 			steps {
 				script {
-					sh "mvn package"
+					buildJar()
 				}
 			}
 		} // end Build Jar
-
 		stage("Login, Build and Push") {
 			steps {
 				script {
@@ -30,14 +27,14 @@ pipeline {
 				}
 			}
 		} // end Login, Build and Push
-
 		stage("Deploy") {
 			steps {
 				script {
-					sh "echo 'It is being deployed'"
+					sh "echo 'Hello World!'"
 				}
 			}
-		} // end Deploy
+		}
 
 	} // end stages
+
 } // end pipeline
