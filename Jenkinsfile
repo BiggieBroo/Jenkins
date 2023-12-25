@@ -15,7 +15,7 @@ pipeline {
 		stage("Build Jar") {
 			steps {
 				script {
-					sh "mvn package"
+					buildJar()
 				}
 			}
 		} // end Build Jar
@@ -23,11 +23,9 @@ pipeline {
 		stage("Login, Build and Push") {
 			steps {
 				script {
-					withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-						sh "echo $PASS | docker login -u $USER --password-stdin"
-						sh "docker build -t ${IMAGE_NAME} ."
-						sh "docker push ${IMAGE_NAME}"
-					}
+					dockerLogin()
+					buildDockerImage("${IMAGE_NAME}")
+					dockerPush("${IMAGE_NAME}")
 				}
 			}
 		} // end Login, Build and Push
