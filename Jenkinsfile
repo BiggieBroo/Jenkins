@@ -38,7 +38,7 @@ pipeline {
 					def cmdFile = "script.sh"
 					sshagent(['aws-server']) {
 						// sh "scp ${cmdFile} ${ec2user}:/home/ec2-user"
-						sh "ssh -o StrictHostKeyChecking=no ${ec2user} sudo bash ${cmdFile}"
+						sh "ssh -o StrictHostKeyChecking=no ${ec2user}"
 					}
 				}
 			}
