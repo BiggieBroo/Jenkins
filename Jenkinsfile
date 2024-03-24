@@ -35,10 +35,7 @@ pipeline {
 			steps {
 				script {
 					sshagent(['aws-server']) {
-						def ec2server = "ec2-user@13.38.24.159"
-						def cmdFile = "script.sh"
-						sh "scp ${cmdFile} ${ec2server}:/home/ec2-user"
-						sh "ssh -o StrictHostKeyChecking=no ${ec2server}"
+						sh "ssh -o StrictHostKeyChecking=no ec2-user@13.38.24.159"
 					}
 				}
 			}
