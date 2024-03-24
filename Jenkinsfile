@@ -34,11 +34,11 @@ pipeline {
 		stage("Deploy") {
 			steps {
 				script {
-					def ec2user = "ec2-user@35.180.199.194"
+					def ec2user = "ec2-user@13.39.158.207"
 					def cmdFile = "script.sh"
 					sshagent(['aws-server']) {
+						sh "ssh -o StrictHostKeyChecking=no ${ec2user}"
 						sh "scp ${cmdFile} ${ec2user}:/home/ec2-user"
-						sh "ssh -o StrictHostKeyChecking=no ${ec2user} sudo bash ${cmdFile}"
 					}
 				}
 			}
