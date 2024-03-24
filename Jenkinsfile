@@ -38,7 +38,7 @@ pipeline {
 						def ec2server = "ec2-user@13.38.24.159"
 						def cmdFile = "script.sh"
 						sh "scp -i ${cmdFile} ${ec2server}:/home/ec2-user"
-						sh "ssh -o StrictHostKeyChecking=no ${ec2server} ./$[cmdFile}"
+						sh "ssh -o StrictHostKeyChecking=no ${ec2server}"
 					}
 				}
 			}
