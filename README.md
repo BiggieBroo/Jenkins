@@ -24,7 +24,7 @@ The following repository represents a full CI/CD pipeline along with technologie
 6. In the "jenkins-shared-library" can be found files that ease the routine of the work by automating the tasks, such as vars/ folder that defines the variables based on the src/com/example folder's classes:
 ![Screenshot from 2024-03-25 04-56-27](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/90b2876a-88ee-4f57-8654-c182a28ca131)
 ![Screenshot from 2024-03-24 21-06-27](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/cf51d499-4e98-414a-9434-fab9f2935c83)
-7. Before going forward a AWS server should be prepared based on the repository "Terraform_AWS_Server" it can be found by the following link https://github.com/BiggieBroo/Terraform_AWS_Server
+7. Before going forward a AWS server should be prepared based on the repository "Custom_Terraform_AWS_Server" it can be found by the following link https://github.com/BiggieBroo/Custom_Terraform_AWS_Server
 8. As soon as the infrastructure gets ready there must be a plugin on Jenkins by the name "SSH Agent". Then should enter .pem file's secret key into the credentials part so that Jenkins might be connected to the AWS server:
 ![Screenshot from 2024-03-24 13-32-14](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/ba9aac4b-27c5-4512-82f9-b8493d6696b2)
 ![Screenshot from 2024-03-24 13-38-58](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/768f87da-9709-4617-acc5-40cc8e2cc2a2)
