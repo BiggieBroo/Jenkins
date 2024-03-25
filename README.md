@@ -17,6 +17,10 @@ The following repository represents a full CI/CD pipeline along with technologie
 ![Screenshot from 2024-03-25 04-47-00](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/d857a753-09ce-49d4-8b8f-e24e4f2047a1)
 4. The next step is installing Tool "Maven" in the Tools category, after that requires to set up credentials for DockerHub (username and password), Github (secret text) for the further integrations.
 ![Screenshot from 2024-03-25 04-49-11](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/c4fcbba7-dbe3-4993-a20a-709b3e98dded)
+![Screenshot from 2024-03-25 04-50-27](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/d646093f-0b7d-4959-ba85-132b9ac16c6c)
+5. In the 5th step it allows us to create a simple pipeline from the "New Item" category. Note: During the putting the reference of the github url, there should be Jenkinsfile in the root folder:
+![Screenshot from 2024-03-25 04-52-16](https://github.com/BiggieBroo/CICD_Pipeline_Jenkins/assets/140602458/bfb7c1dc-31fc-4316-a437-d27300b9f848)
+6. In the "jenkins-shared-library" can be found files that ease the routine of the work by automating the tasks, such as vars/ folder that defines the variables based on the src/com/example folder's classes:
 
 
 
