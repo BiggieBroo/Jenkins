@@ -55,7 +55,6 @@ pipeline {
 		stage("Deploy") {
 			steps {
 				script {
-					sh "echo 'Lets wait for a while'"
 					sleep(time: 90, unit: "SECONDS")
 					/*def ec2user = "ec2-user@13.39.158.207"
 					def cmdFile = "script.sh"
