@@ -63,8 +63,8 @@ pipeline {
 						sh "ssh -o StrictHostKeyChecking=no ${ec2user}"
 						sh "scp ${cmdFile} ${ec2user}:/home/ec2-user"
 					
-					}
-				}	*/
+					}*/
+				}	
 			}
 		} // end Deploy
 
